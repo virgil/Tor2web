@@ -608,7 +608,8 @@ class T2WRequest(http.Request):
 
         if self.isSecure():
             self.setHeader(b'strict-transport-security', b'max-age=31536000')
-
+            self.setHeader(b'Content-Security-Policy', b'upgrade-insecure-requests')
+            
         if config.extra_http_response_headers:
             for header, value in config.extra_http_response_headers.iteritems():
                 self.setHeader(header, value)
